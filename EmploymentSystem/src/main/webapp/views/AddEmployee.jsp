@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -26,8 +27,8 @@
     <input type="text" id="lName" name="lName" required><br>
 
     <!-- Birthdate -->
-    <!--  <label for="birthdate">Birthdate:</label>
-    <input type="date" id="birthdate" name="birthdate" ><br>-->
+     <label for="birthdate">Birthdate:</label>
+    <input type="date" id="dob" name="dob" required><br>
 
     <!-- Position -->
     <label for="position">Position:</label>
@@ -36,6 +37,15 @@
     <!-- Submit Button -->
     <input type="submit" value="Submit">
 </form>
+<!-- Display success message -->
+    <c:if test="${not empty successMessage}">
+        <div style="color: green;">${successMessage}</div>
+    </c:if>
+
+    <!-- Display error message -->
+    <c:if test="${not empty errorMessage}">
+        <div style="color: red;">${errorMessage}</div>
+    </c:if>
 
 </body>
 </html>

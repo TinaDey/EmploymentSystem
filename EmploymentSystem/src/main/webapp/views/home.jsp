@@ -9,14 +9,8 @@
 <form action="/addEmployee" method="get">
 <button type="submit">Add Employee</button>
 </form>
-<form action="" method="get">
+<form action="/searchEmployees" method="get">
 <button type="submit">Search Employee</button>
-</form>
-<form action="" method="get">
-<button type="submit">Edit Employee</button>
-</form>
-<form action="" method="get">
-<button type="submit">Compensation Functions</button>
 </form>
 
 
