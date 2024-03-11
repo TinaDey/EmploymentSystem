@@ -17,5 +17,9 @@ import java.time.YearMonth;
 @Repository
 public interface compensationRepoDb extends JpaRepository<CompModel, Integer> {
 List<CompModel> findBySelectedMonthYearBetween(YearMonth startDate, YearMonth endDate);
+List<CompModel> findByIdAndType(int id, String type);
+List<CompModel> findById(int id);
+//List<CompModel>findByidAndType(int id,String type);
+CompModel findByidAndType(int id,String type);
 }
 

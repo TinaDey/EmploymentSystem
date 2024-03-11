@@ -94,8 +94,7 @@ public String addCom(@RequestParam("id") int employeeId, Model model) {
 
 @PostMapping("/addComp")
 public String addCom(@RequestParam("id") int id,@ModelAttribute("comp") CompModel com,Model model ) {
-	System.out.println(com);
-	 //cService.addAmountToList(id,com.getAmount());
+	model.addAttribute("compId",com.getId());
 	if(cService.addAmountToList(id,com.getAmount(),com))
 	{
 		System.out.println("Success");
@@ -115,23 +114,19 @@ public String viewCom(@RequestParam("startDate") YearMonth startDate,
 	System.out.println(startDate);
 	model.addAttribute("dataComp", cService.getComp(startDate,endDate));
 	System.out.println(cService.getComp(startDate,endDate));
-//	if(cService.addComp(com))
-//	{
-//		System.out.println("Success");
-//	}
-//	else
-//		System.out.println("Failed");
     return "viewCompensation";
 }
 
 @GetMapping("/editComp")
 public String editCom(@RequestParam("id") int id,Model model) {
+	System.out.println(id);
 	model.addAttribute("employeeId", id);
     return "viewEditCompensation";
 }
 
 @PostMapping("/editComp")
 public String editCom(@RequestParam("id") int id,@RequestParam("amount") int amt,@RequestParam("description") String desc ) {
+	
 	if(cService.edit(id,amt,desc)) {
 		System.out.println("Success");
 	}

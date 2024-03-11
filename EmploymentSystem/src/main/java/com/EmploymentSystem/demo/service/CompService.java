@@ -2,6 +2,7 @@ package com.EmploymentSystem.demo.service;
 
 
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,14 +37,16 @@ public class CompService {
 	}
 
 	 public boolean addAmountToList(int id, List<Integer> amounts,CompModel com) {
-		 	CompModel compModel=repo.findById(id).orElse(null);
-
+		 CompModel compModel=repo.findByidAndType(id,com.getType());
+		 	System.out.println(amounts);
+		 	System.out.println(compModel);
 	        if (compModel== null) {
+	        	System.out.println("1st time");
 	            com.setAmount(amounts);
 	            repo.save(com);
 	        } else {
-	        	compModel.addAmount(amounts.get(0));
-	            //com.addAmount(amounts.get(0));
+	        	System.out.println("2nd time");
+	        	compModel.getAmount().add(amounts.get(0));
 	        	repo.save(compModel);
 	        }
 
@@ -52,10 +55,14 @@ public class CompService {
 
 	public boolean edit(int id, int amt, String desc) {
 		try {
-			CompModel existingCompensation=repo.findById(id).orElse(null);
+			List<CompModel> existingCompensation=repo.findById(id);
+			System.out.println(existingCompensation+"DSADS"+id);
+			List<Integer> myList = new ArrayList<>();
 			 if (existingCompensation != null) {
-		            existingCompensation.setDescription(desc);
-		            repo.save(existingCompensation);
+				 myList.add(amt);
+				 existingCompensation.get(0).setAmount(myList);
+            	  existingCompensation.get(0).setDescription(desc);
+		           repo.saveAll(existingCompensation);
 		        }
 			
 			return true;
