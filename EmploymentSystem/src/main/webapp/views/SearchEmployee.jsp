@@ -17,7 +17,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
         }
 
         h1 {
@@ -27,6 +26,15 @@
 
         form {
             background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin-bottom: 20px;
+        }
+        
+        form[id="mainForm"] {
+             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -94,15 +102,17 @@
 <body>
 	<h1>Search Employees</h1>
 	<br />
+	<h3>Select any two fields</h1>
+	<br/>
 	<form action="/searchEmployees" method="post"
-		modelAttribute="employeeSearchForm">
+		modelAttribute="employeeSearchForm" id="mainForm">
 		<label> First Name <input type="checkbox" name="firstName"
 			onchange="toggleInput('fName')">
-		</label> <input type="text" name="fName" id="fName" class="hidden"> 
+		</label> <input type="text" name="firstname" id="firstname" class="hidden"> 
 		<label>
 			Last Name <input type="checkbox" name="lastName"
 			onchange="toggleInput('lName')">
-		</label> <input type="text" name="lName" id="lName" class="hidden"> <label>
+		</label> <input type="text" name="lastname" id="lastname" class="hidden"> <label>
 			Position <input type="checkbox" name="position"
 			onchange="toggleInput('position')">
 		</label> <input type="text" name="postion" id="position" class="hidden">
@@ -127,18 +137,18 @@
 					<c:forEach var="employee" items="${employees}">
 						<tr>
 							<td>${employee.id}</td>
-							<td>${employee.FName}</td>
-							<td>${employee.MName}</td>
-							<td>${employee.LName}</td>
+							<td>${employee.firstname}</td>
+							<td>${employee.middlename}</td>
+							<td>${employee.lastname}</td>
 							<td>${employee.postion}</td>
 							<td>${employee.dob}</td>
 							<td>
 								<form action="/viewEditEmployees" method="post"
 									modelAttribute="editEmp">
 									<input type="hidden" name="id" value="${employee.id}" />
-									<input type="hidden" name="fName" value="${employee.FName}" />
-									<input type="hidden" name="mName" value="${employee.MName}" />
-									<input type="hidden" name="lName" value="${employee.LName}" />
+									<input type="hidden" name="fName" value="${employee.firstname}" />
+									<input type="hidden" name="mName" value="${employee.middlename}" />
+									<input type="hidden" name="lName" value="${employee.lastname}" />
 									<input type="hidden" name="postion" value="${employee.postion}" />
 									<input type="hidden" name="dob" value="${employee.dob}" />
 									<button type="submit">Edit Employee</button>

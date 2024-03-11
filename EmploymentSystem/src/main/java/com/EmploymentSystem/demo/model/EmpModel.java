@@ -22,47 +22,68 @@ public class EmpModel {
 	@Column(name="id")
 	private int id;
 	@Column(nullable = false)
-	private String fName;
-	private String mName;
+	private String firstname;
+	private String middlename;
 	@Column(nullable = false)
-	private String lName;
+	private String lastname;
 	@Column(nullable = false)
 	private String postion;
 	
 	@Column(nullable = false)
 	private LocalDate dob;
 	
-//	 @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
-//	 @PrimaryKeyJoinColumn
-//	private CompModel compensation;
-//	public CompModel getCompensation() {
-//		return compensation;
-//	}
-//
-//
-//	public void setCompensation(CompModel compensation) {
-//		this.compensation = compensation;
-//	}
-	public EmpModel(int id, String fName, String mName, String lName, String postion, LocalDate dob) {
+
+	public EmpModel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public EmpModel(int id, String firstname, String middlename, String lastname, String postion, LocalDate dob) {
 		super();
 		this.id = id;
-		this.fName = fName;
-		this.mName = mName;
-		this.lName = lName;
+		this.firstname = firstname;
+		this.middlename = middlename;
+		this.lastname = lastname;
 		this.postion = postion;
 		this.dob = dob;
 	}
-	//Date currentDate = new Date();
 	
 	
+	public String getFirstname() {
+		return firstname;
+	}
+
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+
+	public String getMiddlename() {
+		return middlename;
+	}
+
+
+	public void setMiddlename(String middlename) {
+		this.middlename = middlename;
+	}
+
+
+	public String getLastname() {
+		return lastname;
+	}
+
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+
 	public LocalDate getDob() {
 		return dob;
 	}
 	public void setDob(LocalDate dob) {
 		this.dob = dob;
-	}
-	public String getFName() {
-		return fName;
 	}
 	public int getId() {
 		return id;
@@ -70,45 +91,20 @@ public class EmpModel {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public void setFName(String fName) {
-		this.fName = fName;
-	}
-	public String getMName() {
-		return mName;
-	}
-	public void setMName(String mName) {
-		this.mName = mName;
-	}
-	public String getLName() {
-		return lName;
-	}
-	@Override
-	public String toString() {
-		return "EmpModel [id=" + id + ", fName=" + fName + ", mName=" + mName + ", lName=" + lName + ", postion="
-				+ postion + ", dob=" + dob + "]";
-	}
-	public EmpModel() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public void setLName(String lName) {
-		this.lName = lName;
-	}
+
 	public String getPostion() {
 		return postion;
 	}
 	public void setPostion(String postion) {
 		this.postion = postion;
 	}
-	public EmpModel(int id,String fName, String mName, String lName,LocalDate dob, String postion) {
-		super();
-		this.id=id;
-		this.fName = fName;
-		this.mName = mName;
-		this.lName = lName;
-		this.dob=dob;
-		this.postion = postion;
+
+	@Override
+	public String toString() {
+		return "EmpModel [id=" + id + ", firstname=" + firstname + ", middlename=" + middlename + ", lastname="
+				+ lastname + ", postion=" + postion + ", dob=" + dob + "]";
 	}
+	
 	
 
 }

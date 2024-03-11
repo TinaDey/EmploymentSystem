@@ -4,6 +4,7 @@ package com.EmploymentSystem.demo.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class empService {
 	private employeeRepoDb repo;
 	public Boolean addEmp(EmpModel emp) {
 		try {
-			if(repo.findByfName(emp.getFName()).size()>0 && repo.findBymName(emp.getMName()).size()>0 && repo.findBylName(emp.getLName()).size()>0 && repo.findBydob(emp.getDob()).size()>0) {
+			if(repo.findByFirstname(emp.getFirstname()).size()>0 && repo.findByMiddlename(emp.getMiddlename()).size()>0 && repo.findByLastname(emp.getLastname()).size()>0 && repo.findByDob(emp.getDob()).size()>0) {
 				return false;
 			}
 			repo.save(emp);
@@ -35,9 +36,9 @@ public class empService {
 			 if (existingEmployee != null) {
 				 System.out.println("IF");
 		            // Update fields based on the editedEmployee
-		            existingEmployee.setFName(emp.getFName());
-		            existingEmployee.setMName(emp.getMName());
-		            existingEmployee.setLName(emp.getLName());
+		            existingEmployee.setFirstname(emp.getFirstname());
+		            existingEmployee.setMiddlename(emp.getMiddlename());
+		            existingEmployee.setLastname(emp.getLastname());
 		            existingEmployee.setPostion(emp.getPostion());
 		            existingEmployee.setDob(emp.getDob());
 		            
@@ -53,23 +54,25 @@ public class empService {
 		}
 	}
 	public List<EmpModel> searchEmp(EmpModel emp){
-		return repo.findAll();
-//		if(emp.getFName().length()>0&&emp.getLName().length()>0 &&emp.getPostion().length()>0)
-//		{
-//			//return repo.findByfNameAndlNameAndpostion(emp.getfName(),emp.getlName(),emp.getPostion());
-//		}
-//		if(emp.getFName().length()>0&&emp.getLName().length()>0)
-//		{
-//			//return repo.findByFNameAndLName(emp.getfName(),emp.getlName());
-//		}
-//		if(emp.getLName().length()>0&&emp.getPostion().length()>0)
-//		{
-//			//return repo.findBylNameAndpostion(emp.getlName(), emp.getPostion());
-//		}
-//		if(emp.getFName().length()>0&&emp.getPostion().length()>0)
-//		{
-//			//return repo.findByfNameAndpostion(emp.getfName(),emp.getPostion());
-//		}
-//		return null;
+		System.out.println(emp);
+		//return repo.findAll();
+		if(emp.getFirstname().length()>0&&emp.getLastname().length()>0 &&emp.getPostion().length()>0)
+		{
+			System.out.println("DODODODO");
+			return repo.findByFirstnameAndLastnameAndPostion(emp.getFirstname(),emp.getLastname(),emp.getPostion());
+	}
+	if(emp.getFirstname().length()>0&&emp.getLastname().length()>0)
+		{
+			return repo.findByFirstnameAndLastname(emp.getFirstname(),emp.getLastname());
+	}
+		if(emp.getLastname().length()>0&&emp.getPostion().length()>0)
+		{
+			return repo.findByLastnameAndPostion(emp.getLastname(), emp.getPostion());
+	}
+		if(emp.getFirstname().length()>0&&emp.getPostion().length()>0)
+		{
+		return repo.findByFirstnameAndPostion(emp.getFirstname(),emp.getPostion());
+		}
+		return null;
 	}
 }

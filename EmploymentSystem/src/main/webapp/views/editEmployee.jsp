@@ -72,13 +72,13 @@
 <form action="/editEmployees" method="post" modelAttribute="editEmp">
 <input type="hidden" name="id" value="${editEmp.id}" />
     <label for="FName">First Name:</label>
-    <input type="text" id="FName" name="fName" value="${editEmp.FName}" required><br>
+    <input type="text" id="firstname" name="firstname" value="${editEmp.firstname}" required><br>
 
     <label for="MName">Middle Name:</label>
-    <input type="text" id="MName" name="mName" value="${editEmp.MName}" required><br>
+    <input type="text" id="middlename" name="middlename" value="${editEmp.middlename}" required><br>
 
     <label for="LName">Last Name:</label>
-    <input type="text" id="LName" name="lName" value="${editEmp.LName}" required><br>
+    <input type="text" id="lastname" name="lastname" value="${editEmp.lastname}" required><br>
 
     <label for="position">Position:</label>
     <input type="text" id="position" name="postion" value="${editEmp.postion}" required><br>

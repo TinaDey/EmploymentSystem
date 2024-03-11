@@ -78,15 +78,15 @@
 	
     <!-- First Name -->
     <label for="firstName">First Name:</label>
-    <input type="text" id="fName" name="fName" required><br>
+    <input type="text" id="firstname" name="firstname" required><br>
 
     <!-- Middle Name -->
     <label for="middleName">Middle Name:</label>
-    <input type="text" id="mName" name="mName"><br>
+    <input type="text" id="middlename" name="middlename"><br>
 
     <!-- Last Name -->
     <label for="lastName">Last Name:</label>
-    <input type="text" id="lName" name="lName" required><br>
+    <input type="text" id="lastname" name="lastname" required><br>
 
     <!-- Birthdate -->
      <label for="birthdate">Birthdate:</label>
