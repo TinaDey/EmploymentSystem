@@ -17,6 +17,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
         }
 
         h2 {
@@ -31,6 +32,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 300px;
             text-align: center;
+            background:transparent;
         }
 
         label {
@@ -97,6 +99,15 @@
 
     <input type="submit" value="Submit">
 </form>
+
+    <c:if test="${not empty successMessage}">
+        <div style="color: green;">${successMessage}</div>
+    </c:if>
+
+    <!-- Display error message -->
+    <c:if test="${not empty errorMessage}">
+        <div style="color: red;">${errorMessage}</div>
+    </c:if>
 
 </body>
 </html>

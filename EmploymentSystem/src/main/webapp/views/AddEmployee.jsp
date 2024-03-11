@@ -18,6 +18,7 @@
             align-items: center;
             justify-content: space-evenly;
             height: 100vh;
+            background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
         }
 
         form {
@@ -26,6 +27,7 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 300px;
+            background:transparent;
         }
 
         h1 {
@@ -52,6 +54,7 @@
             background-color: #4caf50;
             color: #fff;
             cursor: pointer;
+            
         }
 
         input[type="submit"]:hover {

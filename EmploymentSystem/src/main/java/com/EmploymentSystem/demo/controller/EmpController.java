@@ -97,10 +97,14 @@ public String addCom(@RequestParam("id") int id,@ModelAttribute("comp") CompMode
 	model.addAttribute("compId",com.getId());
 	if(cService.addAmountToList(id,com.getAmount(),com))
 	{
+		 model.addAttribute("successMessage", "Compensation added successfully!Go back to add again");
 		System.out.println("Success");
 	}
 	else
+	{
 		System.out.println("Failed");
+		model.addAttribute("errorMessage", "Failed to add compensation!!Go back");		
+	}
     return "AddCompensation";
 }
 

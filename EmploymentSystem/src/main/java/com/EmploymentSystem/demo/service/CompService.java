@@ -39,6 +39,7 @@ public class CompService {
 	 public boolean addAmountToList(int id, List<Integer> amounts,CompModel com) {
 		 CompModel compModel=repo.findByidAndType(id,com.getType());
 		 	System.out.println(amounts);
+		 	List<Integer> emptyList = new ArrayList<>();
 		 	System.out.println(compModel);
 	        if (compModel== null) {
 	        	System.out.println("1st time");

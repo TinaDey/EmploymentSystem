@@ -17,6 +17,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
         }
 
         h1 {
@@ -31,6 +32,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 300px;
             margin-bottom: 20px;
+            background:transparent;
         }
         
         form[id="mainForm"] {
@@ -40,6 +42,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 300px;
             margin-bottom: 20px;
+            background:transparent;
         }
 
         label {
@@ -117,7 +120,7 @@
 			onchange="toggleInput('position')">
 		</label> <input type="text" name="postion" id="position" class="hidden">
 
-		<button type="submit">Search</button>
+		<button type="submit" onclick="checkCheckboxes()">Search</button>
 		<button type="button" onclick="clearSearch()">Clear</button>
 	</form>
 	<div id="searchResults">
@@ -146,9 +149,9 @@
 								<form action="/viewEditEmployees" method="post"
 									modelAttribute="editEmp">
 									<input type="hidden" name="id" value="${employee.id}" />
-									<input type="hidden" name="fName" value="${employee.firstname}" />
-									<input type="hidden" name="mName" value="${employee.middlename}" />
-									<input type="hidden" name="lName" value="${employee.lastname}" />
+									<input type="hidden" name="firstname" value="${employee.firstname}" />
+									<input type="hidden" name="middlename" value="${employee.middlename}" />
+									<input type="hidden" name="lastname" value="${employee.lastname}" />
 									<input type="hidden" name="postion" value="${employee.postion}" />
 									<input type="hidden" name="dob" value="${employee.dob}" />
 									<button type="submit">Edit Employee</button>
@@ -185,6 +188,21 @@
                 toggleInput(checkbox.name);
             });
         }
+        function checkCheckboxes() {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var checkedCount = 0;
+
+            checkboxes.forEach(function(checkbox) {
+              if (checkbox.checked) {
+                checkedCount++;
+              }
+            });
+
+            if (checkedCount < 2) {
+            	alert("Please check at least two checkboxes.");
+            }
+
+          }
     </script>
 
 </body>
